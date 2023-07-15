@@ -7,11 +7,26 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
     }
 
+    *::selection {
+        background: #ED4D1B;
+        color: #FFF;
+    }
+
     html {
         scroll-behavior: smooth;
     }
 
     body {
         background: linear-gradient(90deg, #FFE7D1 0%, #FFF2E5 100%);
+        overflow-x: hidden;
+    }
+    
+    *::-webkit-scrollbar {
+        background: linear-gradient(90deg, #FFE7D1 0%, #FFF2E5 100%);
+        width: 0.3rem;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background: #ED4D1B;
     }
 `;

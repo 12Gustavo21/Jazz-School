@@ -6,7 +6,7 @@ import * as S from './style';
 export default function index(props) {
     return (
         <>
-            <S.Button>
+            <S.Button {...props}>
                 {props.text}
             </S.Button>
         </>

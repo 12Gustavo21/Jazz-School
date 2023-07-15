@@ -4,10 +4,10 @@ const GET_HOME_DTA = gql`
 query Home {
     home(where: {slug: "home"}) {
         logo
-        navigations {
-            name
+            navigations {
+                name
         }
-        tittle {
+        title {
             text
         }
         dashes {
@@ -20,15 +20,19 @@ query Home {
         cards {
             instrument {
             url
-            }
+        }
             name
             description
             arrow {
-            url
+                url
             }
+        }   
+        arrowCurve {
+            url
         }
-        }
+        typeOfSchool
     }
+}
 `;
 
 export default GET_HOME_DTA;
