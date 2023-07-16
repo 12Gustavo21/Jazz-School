@@ -76,12 +76,10 @@ export const Logo = styled.div`
     
     h1 {
         font: 900 3em 'Roboto', sans-serif;
-        cursor: pointer;
     }
     
     p {
         font: 900 1.45em 'Roboto', sans-serif;
-        cursor: pointer;
     }
 
     @media only screen and (width <= 768px) {
@@ -124,7 +122,7 @@ export const Navigation = styled.nav`
         list-style: none;
         font: 500 1.25em 'Roboto', sans-serif;
         li {
-            cursor: pointer;
+
             position: relative;
 
             &::after {
@@ -213,6 +211,18 @@ export const MainAnnouncement = styled.div`
     border-bottom: 0.0625rem solid #000;
 `;
 
+const dash = keyframes`
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(.5rem);
+    }
+    100% {
+        transform: translateX(0);
+    }
+`;
+
 export const TitleBox = styled.div`
     width: 100%;
     height: 40%;
@@ -231,31 +241,20 @@ export const TitleBox = styled.div`
 
         span {
             color: #ED4D1B;
+            position: relative;
+
+            &::after {
+                content: "";
+                background-image: url(https://media.graphassets.com/GxD904bVRDSa8HiP7LsQ);
+                position: absolute;
+                top: -0.75rem;
+                height: 36px;
+                width: 40px;
+                animation: ${dash} 1.5s linear infinite;
+            }
         }
     }
 `;
-
-const dash = keyframes`
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(.5rem);
-    }
-    100% {
-        transform: translateX(0);
-    }
-`;
-export const Dashes = styled.img`
-    width: 2.8rem;
-    height: 2.8rem;
-    object-fit: contain;
-    position: absolute;
-    left: 26rem;
-    top: 19rem;
-    animation: ${dash} 1.5s linear infinite;
-`;
-
 
 export const Description = styled.div`
     width: 70%;
@@ -272,16 +271,6 @@ export const Description = styled.div`
     }
 `;
 
-export const AnnouncementButtonBox = styled.div`
-    width: 55%;
-    height: 30%;
-    padding-top: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    animation: ${SlideAnimationLeft} 2.5s ease-in-out;
-`;
-
 const DashY = keyframes`
     0% {
         transform: translateY(0) rotate(0);
@@ -294,14 +283,29 @@ const DashY = keyframes`
     }
 `;
 
-export const ArrowCurve = styled.img`
-    width: 9rem;
-    height: 9rem;
-    object-fit: contain;
-    position: absolute;
-    left: 15rem;
-    top: 43rem;
-    animation: ${DashY} 1.5s linear infinite;
+export const AnnouncementButtonBox = styled.div`
+    width: 55%;
+    height: 30%;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    animation: ${SlideAnimationLeft} 2.5s ease-in-out;
+
+    button {
+        position: relative;
+    }
+
+    button::after {
+        content: "";
+        background: url(https://media.graphassets.com/toEbl0QNTf2irtvQAPtv) no-repeat;
+        position: absolute;
+        top: 6rem;
+        left: 8rem;
+        height: 9rem;
+        width: 9rem;
+        animation: ${DashY} 1.5s linear infinite;
+    }
 `;
 
 export const MainFigure = styled.figure`
@@ -420,7 +424,6 @@ export const CardFooter = styled.div`
         width: 4rem;
         height: 4rem;
         object-fit: contain;
-        cursor: pointer;
         animation: ${ArrowAnimation} 2s linear infinite;
     }
 `;
@@ -495,12 +498,10 @@ export const FooterAboutLogo = styled.div`
     
     h1 {
         font: 900 2.5em 'Roboto', sans-serif;
-        cursor: pointer;
     }
     
     p {
         font: 900 1.2em 'Roboto', sans-serif;
-        cursor: pointer;
     }
 `;
 
@@ -540,7 +541,7 @@ export const FooterNavigationList = styled.div`
 
         li {
             font: 500 1.25em 'Roboto', sans-serif;
-            cursor: pointer;
+
             position: relative;
 
             &::after {

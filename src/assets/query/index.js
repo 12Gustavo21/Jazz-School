@@ -10,9 +10,6 @@ query Home {
         title {
             text
         }
-        dashes {
-            url
-        }
         description
         orchestra {
             url
@@ -26,9 +23,6 @@ query Home {
             arrow {
                 url
             }
-        }   
-        arrowCurve {
-            url
         }
         typeOfSchool
     }

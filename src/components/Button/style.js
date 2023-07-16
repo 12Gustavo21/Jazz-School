@@ -9,7 +9,6 @@ export const Button = styled.button`
     font: 500 1.25rem 'Roboto', sans-serif;
     color: #000;
     text-transform: uppercase;
-    cursor: pointer;
     transition: all 0.3s ease-in-out;
 
     &:hover {
