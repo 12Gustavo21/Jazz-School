@@ -46,7 +46,7 @@ export default function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrollPosition]);
+  });
 
   const { loading, error, data } = useQuery(GET_HOME_DATA);
 
