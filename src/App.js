@@ -22,7 +22,7 @@ import Cursor from './components/Cursor/index';
 export default function App() {
   const [scroll, setScroll] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [size, setSize] = useState(false)
+  const [size, setSize] = useState(false);
 
   const handleScroll = () => {
     const currentPosition = window.scrollY;
@@ -46,7 +46,7 @@ export default function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  });
+  }, [scrollPosition]);
 
   const { loading, error, data } = useQuery(GET_HOME_DATA);
 
@@ -64,11 +64,11 @@ export default function App() {
   const shouldRenderCursor = window.innerWidth > 1024;
 
   const handleIncrease = () => {
-    setSize(true)
-  }
+    setSize(true);
+  };
   const handleDecrease = () => {
-    setSize(false)
-  }
+    setSize(false);
+  };
 
   return (
     <>
@@ -78,12 +78,13 @@ export default function App() {
       <RevealRight />
       {shouldRenderCursor && <Cursor size={size} />}
       <S.Header>
-        <S.HeaderContainer
-          showMenu={scroll === 'up'}
-          hiddenMenu={scroll === 'down'}
-        >
-          <S.Logo onClick={toTop} onMouseEnter={handleIncrease}
-            onMouseLeave={handleDecrease}>
+        <S.HeaderContainer 
+        showMenu={scroll === 'up'} 
+        hiddenMenu={scroll === 'down'}>
+          <S.Logo 
+          onClick={toTop} 
+          onMouseEnter={handleIncrease} 
+          onMouseLeave={handleDecrease}>
             <h1>{home.logo}</h1>
             <p>{home.typeOfSchool}</p>
           </S.Logo>
@@ -91,23 +92,32 @@ export default function App() {
             <S.Navigation>
               <ul>
                 {home.navigations.map((item, index) => (
-                  <li key={index} title={item.name} onMouseEnter={handleIncrease}
-                    onMouseLeave={handleDecrease}>{item.name}</li>
+                  <li
+                    key={index}
+                    title={item.name}
+                    onMouseEnter={handleIncrease}
+                    onMouseLeave={handleDecrease}
+                  >
+                    {item.name}
+                  </li>
                 ))}
               </ul>
             </S.Navigation>
           </S.NavigationBox>
           <S.HeaderButtonBox>
-            <Button text="Se inscreva" width="12rem" onMouseEnter={handleIncrease}
-              onMouseLeave={handleDecrease} />
+            <Button
+              text="Se inscreva"
+              width="12rem"
+              onMouseEnter={handleIncrease}
+              onMouseLeave={handleDecrease}
+            />
           </S.HeaderButtonBox>
         </S.HeaderContainer>
       </S.Header>
       <S.Main>
-        <S.MainContainer
-          showMenu={scroll === 'up'}
-          hiddenMenu={scroll === 'down'}
-        >
+        <S.MainContainer 
+        showMenu={scroll === 'up'} 
+        hiddenMenu={scroll === 'down'}>
           <S.MainAnnouncement>
             <aside>
               <S.TitleBox>
@@ -117,8 +127,12 @@ export default function App() {
                 <p>{home.description}</p>
               </S.Description>
               <S.AnnouncementButtonBox>
-                <Button text="Comece agora" width='14rem' onMouseEnter={handleIncrease}
-                  onMouseLeave={handleDecrease} />
+                <Button
+                  text="Comece agora"
+                  width="14rem"
+                  onMouseEnter={handleIncrease}
+                  onMouseLeave={handleDecrease}
+                />
               </S.AnnouncementButtonBox>
             </aside>
             <S.MainFigure>
@@ -130,15 +144,26 @@ export default function App() {
               {home.cards.map((item, index) => (
                 <S.Card key={index} className="reveal">
                   <S.CardHeader>
-                    <img src={item.instrument.url} alt={item.instrument.alt} draggable='false' loading='lazy' />
+                    <img
+                      src={item.instrument.url}
+                      alt={item.name}
+                      draggable="false"
+                      loading="lazy"
+                    />
                   </S.CardHeader>
                   <S.CardBody>
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
                   </S.CardBody>
                   <S.CardFooter>
-                    <img src={item.arrow.url} alt={item.arrow.alt} draggable='false' loading='lazy' onMouseEnter={handleIncrease}
-                      onMouseLeave={handleDecrease} />
+                    <img
+                      src={item.arrow.url}
+                      alt="Arrow for right"
+                      draggable="false"
+                      loading="lazy"
+                      onMouseEnter={handleIncrease}
+                      onMouseLeave={handleDecrease}
+                    />
                   </S.CardFooter>
                 </S.Card>
               ))}
@@ -147,18 +172,25 @@ export default function App() {
           <S.CursersBox>
             <S.CursersAnouncement>
               <h2 className="reveal">E <span>vários</span> outros!</h2>
-              <Button text="Conhecer cursos" width='14rem' className="reveal" onMouseEnter={handleIncrease}
-                onMouseLeave={handleDecrease} />
+              <Button
+                text="Conhecer cursos"
+                width="14rem"
+                className="reveal"
+                onMouseEnter={handleIncrease}
+                onMouseLeave={handleDecrease}
+              />
             </S.CursersAnouncement>
           </S.CursersBox>
         </S.MainContainer>
       </S.Main>
       <S.Footer>
         <S.FooterContainer>
-          <S.FooterAbout className='reveal-left'>
-            <S.FooterAboutLogo onClick={toTop} onMouseEnter={handleIncrease}
-              onMouseLeave={handleDecrease}>
-              <h1>{home.logo}</h1>
+          <S.FooterAbout className="reveal-left">
+            <S.FooterAboutLogo 
+            onClick={toTop} 
+            onMouseEnter={handleIncrease} 
+            onMouseLeave={handleDecrease}>
+              <h2>{home.logo}</h2>
               <p>{home.typeOfSchool}</p>
             </S.FooterAboutLogo>
             <S.FooterAboutDescription>
@@ -166,21 +198,31 @@ export default function App() {
             </S.FooterAboutDescription>
           </S.FooterAbout>
           <S.FooterNavigation>
-            <S.FooterNavigationList className='reveal-left'>
+            <S.FooterNavigationList className="reveal-left">
               <ul>
                 {home.navigations.map((item, index) => (
-                  <li key={index} title={item.name} onMouseEnter={handleIncrease}
-                    onMouseLeave={handleDecrease}>{item.name}</li>
+                  <li
+                    key={index}
+                    title={item.name}
+                    onMouseEnter={handleIncrease}
+                    onMouseLeave={handleDecrease}
+                  >
+                    {item.name}
+                  </li>
                 ))}
               </ul>
             </S.FooterNavigationList>
           </S.FooterNavigation>
-          <S.FooterContact className='reveal-right'>
-            <h3>Receba materiais gratuitos no seu email</h3>
+          <S.FooterContact className="reveal-right">
+            <label htmlFor="email">Receba materiais gratuitos no seu email</label>
             <S.FooterContactForm>
-              <input type="email" />
-              <Button text="Quero receber" width='14rem' onMouseEnter={handleIncrease}
-                onMouseLeave={handleDecrease} />
+              <input type="email" id="email" />
+              <Button
+                text="Quero receber"
+                width="14rem"
+                onMouseEnter={handleIncrease}
+                onMouseLeave={handleDecrease}
+              />
             </S.FooterContactForm>
           </S.FooterContact>
         </S.FooterContainer>

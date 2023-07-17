@@ -496,7 +496,7 @@ export const FooterAboutLogo = styled.div`
     user-select: none;
     text-transform: uppercase;
     
-    h1 {
+    h2 {
         font: 900 2.5em 'Roboto', sans-serif;
     }
     
@@ -576,7 +576,7 @@ export const FooterContact = styled.div`
     flex-direction: column;
     transition: all 1s ease-in-out;
 
-    h3 {
+    label {
         font: 500 1.5em 'Roboto', sans-serif;
     }
 `;

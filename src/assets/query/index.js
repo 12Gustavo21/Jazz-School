@@ -16,8 +16,8 @@ query Home {
         }
         cards {
             instrument {
-            url
-        }
+                url
+            }
             name
             description
             arrow {
