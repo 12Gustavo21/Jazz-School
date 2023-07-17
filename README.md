@@ -4,7 +4,7 @@
 
 ## OneBitCode challenge
 
-<img width ='800px' src ='./src/assets/gif/Recording.gif' />
+<img width ='800px' src ='./src/assets/gifs/Recording.gif' />
 
 *Technologies*
 
