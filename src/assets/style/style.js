@@ -211,18 +211,6 @@ export const MainAnnouncement = styled.div`
     border-bottom: 0.0625rem solid #000;
 `;
 
-const dash = keyframes`
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(.5rem);
-    }
-    100% {
-        transform: translateX(0);
-    }
-`;
-
 export const TitleBox = styled.div`
     width: 100%;
     height: 40%;
@@ -248,9 +236,8 @@ export const TitleBox = styled.div`
                 background-image: url(https://media.graphassets.com/GxD904bVRDSa8HiP7LsQ);
                 position: absolute;
                 top: -0.75rem;
-                height: 36px;
-                width: 40px;
-                animation: ${dash} 1.5s linear infinite;
+                height: 2.25rem;
+                width: 2.5rem;
             }
         }
     }
@@ -268,18 +255,6 @@ export const Description = styled.div`
         width: 80%;
         height: 100%;
         font: 500 1.5em 'Roboto', sans-serif;
-    }
-`;
-
-const DashY = keyframes`
-    0% {
-        transform: translateY(0) rotate(0);
-    }
-    50% {
-        transform: translateY(-.5rem) rotate(10deg);
-    }
-    100% {
-        transform: translateY(0) rotate(0);
     }
 `;
 
@@ -304,7 +279,6 @@ export const AnnouncementButtonBox = styled.div`
         left: 8rem;
         height: 9rem;
         width: 9rem;
-        animation: ${DashY} 1.5s linear infinite;
     }
 `;
 
@@ -401,18 +375,6 @@ export const CardBody = styled.div`
     }
 `;
 
-const ArrowAnimation = keyframes`
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(.5rem);
-    }
-    100% {
-        transform: translateX(0);
-    }    
-`;
-
 export const CardFooter = styled.div`
     width: 100%;
     height: 20%;
@@ -424,7 +386,6 @@ export const CardFooter = styled.div`
         width: 4rem;
         height: 4rem;
         object-fit: contain;
-        animation: ${ArrowAnimation} 2s linear infinite;
     }
 `;
 
