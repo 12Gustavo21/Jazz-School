@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Assets
-import Piano from '../../assets/gifs/piano.gif';
+import Piano from '../../assets/video/piano.mp4';
 
 //Styles
 import { styled } from 'styled-components';
@@ -43,15 +43,16 @@ const Main = styled.main`
         }
     }
 
-    figure {
+    div {
         width: 100%;
         height: 100%;
         display: grid;
         place-items: center;
 
-        img {
-            width: 20rem;
-            height: 20rem;
+        video {
+            width: 30rem;
+            height: 30rem;
+            mix-blend-mode: multiply;
         }
     }
 
@@ -75,9 +76,9 @@ export default function index() {
             <Main>
                 <section>
                     <p>Carregando...</p>
-                    <figure>
-                        <img src={Piano} alt="Piano Video" />
-                    </figure>
+                    <div>
+                        <video src={Piano} autoPlay loop muted></video>
+                    </div>
                 </section>
             </Main>
         </>

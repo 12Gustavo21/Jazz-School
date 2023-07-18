@@ -205,7 +205,7 @@ export const MainContainer = styled.section`
 
 export const MainAnnouncement = styled.div`
     width: 100%;
-    height: 120vh;
+    min-height: 100vh;
     display: flex;
     padding: 3rem 0 10rem;
     border-bottom: 0.0625rem solid #000;
@@ -303,22 +303,21 @@ export const CardsBox = styled.div`
     height: 50vh;
     display: flex;
     justify-content: center;
-    position: absolute;
-    top: 63rem;
-    right: 1rem;
+    margin-top: -7rem;
 `;
 
 export const Cards = styled.div`
-    width: 90%;
+    width: 100%;
     height: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
+    gap: 1rem;
 
     article:nth-child(odd) {
         background-color: #ED4D1B;
-
+        
         &:hover {
             margin-top: 2rem;
         }
@@ -344,7 +343,7 @@ export const Card = styled.article`
     padding: 2rem 1rem 0 2rem;
     border: 0.125rem solid #000;
     box-shadow: 0.25rem 0.25rem 0 0 #000;
-    transition: all 1s ease-in-out, margin 0.5s ease-in-out;
+    transition: all 1s ease-in-out;
 `;
 
 export const CardHeader = styled.div`
@@ -371,7 +370,7 @@ export const CardBody = styled.div`
     }
 
     p {
-        font: 500 1.1em 'Roboto', sans-serif;
+        font: 500 1em 'Roboto', sans-serif;
     }
 `;
 
@@ -391,7 +390,7 @@ export const CardFooter = styled.div`
 
 export const CursersBox = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -404,7 +403,6 @@ export const CursersAnouncement = styled.div`
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    padding-top: 15rem;
 
     h2 {
         font: 900 4em 'Roboto', sans-serif;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 
 //Styles
 import { GlobalStyle } from './assets/global/style';
@@ -11,13 +11,13 @@ import { useQuery } from '@apollo/client';
 import GET_HOME_DATA from './assets/query/index';
 
 //Components
-import Loading from './components/Loading/index';
-import Error from './components/Error/index';
-import Button from './components/Button/index';
-import Reveal from './components/Reveal/index';
-import RevealLeft from './components/RevealLeft/index';
-import RevealRight from './components/RevealRight/index';
-import Cursor from './components/Cursor/index';
+const Reveal = lazy(() => import('./components/Reveal/index'));
+const RevealLeft = lazy(() => import('./components/RevealLeft/index'));
+const RevealRight = lazy(() => import('./components/RevealRight/index'));
+const Cursor = lazy(() => import('./components/Cursor/index'));
+const Button = lazy(() => import('./components/Button/index'));
+const Loading = lazy(() => import('./components/Loading/index'));
+const Error = lazy(() => import('./components/Error/index'));
 
 export default function App() {
   const [scroll, setScroll] = useState(false);
@@ -48,7 +48,9 @@ export default function App() {
     };
   });
 
-  const { loading, error, data } = useQuery(GET_HOME_DATA);
+  const { loading, error, data } = useQuery(GET_HOME_DATA, {
+    fetchPolicy: 'cache-first',
+  });
 
   if (loading) return <Loading />;
   if (error) return <Error />;
@@ -73,18 +75,20 @@ export default function App() {
   return (
     <>
       <GlobalStyle />
-      <Reveal />
-      <RevealLeft />
-      <RevealRight />
-      {shouldRenderCursor && <Cursor size={size} />}
+      <Suspense fallback={<p>Loading.....</p>} >
+        <Reveal />
+        <RevealLeft />
+        <RevealRight />
+        {shouldRenderCursor && <Cursor size={size} />}
+      </Suspense>
       <S.Header>
-        <S.HeaderContainer 
-        showMenu={scroll === 'up'} 
-        hiddenMenu={scroll === 'down'}>
-          <S.Logo 
-          onClick={toTop} 
-          onMouseEnter={handleIncrease} 
-          onMouseLeave={handleDecrease}>
+        <S.HeaderContainer
+          showMenu={scroll === 'up'}
+          hiddenMenu={scroll === 'down'}>
+          <S.Logo
+            onClick={toTop}
+            onMouseEnter={handleIncrease}
+            onMouseLeave={handleDecrease}>
             <h1>{home.logo}</h1>
             <p>{home.typeOfSchool}</p>
           </S.Logo>
@@ -115,9 +119,9 @@ export default function App() {
         </S.HeaderContainer>
       </S.Header>
       <S.Main>
-        <S.MainContainer 
-        showMenu={scroll === 'up'} 
-        hiddenMenu={scroll === 'down'}>
+        <S.MainContainer
+          showMenu={scroll === 'up'}
+          hiddenMenu={scroll === 'down'}>
           <S.MainAnnouncement>
             <aside>
               <S.TitleBox>
@@ -186,10 +190,10 @@ export default function App() {
       <S.Footer>
         <S.FooterContainer>
           <S.FooterAbout className="reveal-left">
-            <S.FooterAboutLogo 
-            onClick={toTop} 
-            onMouseEnter={handleIncrease} 
-            onMouseLeave={handleDecrease}>
+            <S.FooterAboutLogo
+              onClick={toTop}
+              onMouseEnter={handleIncrease}
+              onMouseLeave={handleDecrease}>
               <h2>{home.logo}</h2>
               <p>{home.typeOfSchool}</p>
             </S.FooterAboutLogo>
