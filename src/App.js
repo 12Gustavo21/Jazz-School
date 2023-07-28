@@ -4,6 +4,10 @@ import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { GlobalStyle } from './assets/global/style';
 import * as S from './assets/style/style';
 
+//AOS
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 //Apollo
 import { useQuery } from '@apollo/client';
 
@@ -11,18 +15,14 @@ import { useQuery } from '@apollo/client';
 import GET_HOME_DATA from './assets/query/index';
 
 //Components
-const Reveal = lazy(() => import('./components/Reveal/index'));
-const RevealLeft = lazy(() => import('./components/RevealLeft/index'));
-const RevealRight = lazy(() => import('./components/RevealRight/index'));
-const Cursor = lazy(() => import('./components/Cursor/index'));
-const Button = lazy(() => import('./components/Button/index'));
-const Loading = lazy(() => import('./components/Loading/index'));
-const Error = lazy(() => import('./components/Error/index'));
+const Button = lazy(() => import('./components/Button'));
+const Loading = lazy(() => import('./components/Loading'));
+const Error = lazy(() => import('./components/Error'));
+const Cards = lazy(() => import('./components/Cards'));
 
 export default function App() {
   const [scroll, setScroll] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-  const [size, setSize] = useState(false);
 
   const handleScroll = () => {
     const currentPosition = window.scrollY;
@@ -41,6 +41,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    AOS.init({});
     window.addEventListener('scroll', handleScroll);
 
     return () => {
@@ -63,44 +64,31 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  const shouldRenderCursor = window.innerWidth > 1024;
-
-  const handleIncrease = () => {
-    setSize(true);
-  };
-  const handleDecrease = () => {
-    setSize(false);
-  };
-
   return (
     <>
       <GlobalStyle />
-      <Suspense fallback={<p>Loading.....</p>} >
-        <Reveal />
-        <RevealLeft />
-        <RevealRight />
-        {shouldRenderCursor && <Cursor size={size} />}
-      </Suspense>
       <S.Header>
         <S.HeaderContainer
           showMenu={scroll === 'up'}
           hiddenMenu={scroll === 'down'}>
           <S.Logo
             onClick={toTop}
-            onMouseEnter={handleIncrease}
-            onMouseLeave={handleDecrease}>
+            data-aos="fade-right"
+            data-aos-duration="2000"
+          >
             <h1>{home.logo}</h1>
             <p>{home.typeOfSchool}</p>
           </S.Logo>
           <S.NavigationBox>
             <S.Navigation>
-              <ul>
+              <ul
+                data-aos="fade-left"
+                data-aos-duration="2000"
+              >
                 {home.navigations.map((item, index) => (
                   <li
                     key={index}
                     title={item.name}
-                    onMouseEnter={handleIncrease}
-                    onMouseLeave={handleDecrease}
                   >
                     {item.name}
                   </li>
@@ -108,108 +96,109 @@ export default function App() {
               </ul>
             </S.Navigation>
           </S.NavigationBox>
-          <S.HeaderButtonBox>
-            <Button
-              text="Se inscreva"
-              width="12rem"
-              onMouseEnter={handleIncrease}
-              onMouseLeave={handleDecrease}
-            />
+          <S.HeaderButtonBox
+            data-aos="fade-left"
+            data-aos-duration="2000"
+          >
+            <Suspense fallback={<p>Loading.....</p>} >
+              <Button
+                text="Se inscreva"
+                width="12rem"
+              />
+            </Suspense>
           </S.HeaderButtonBox>
         </S.HeaderContainer>
       </S.Header>
       <S.Main>
         <S.MainContainer
           showMenu={scroll === 'up'}
-          hiddenMenu={scroll === 'down'}>
+          hiddenMenu={scroll === 'down'}
+        >
           <S.MainAnnouncement>
             <aside>
-              <S.TitleBox>
+              <S.TitleBox
+                data-aos="fade-right"
+                data-aos-duration="2100"
+              >
                 <h2 dangerouslySetInnerHTML={{ __html: home.title.text.replace(/\\n/g, '') }}></h2>
               </S.TitleBox>
-              <S.Description>
+              <S.Description
+                data-aos="fade-right"
+                data-aos-duration="2200"
+              >
                 <p>{home.description}</p>
               </S.Description>
-              <S.AnnouncementButtonBox>
-                <Button
-                  text="Comece agora"
-                  width="14rem"
-                  onMouseEnter={handleIncrease}
-                  onMouseLeave={handleDecrease}
-                />
+              <S.AnnouncementButtonBox
+                data-aos="fade-right"
+                data-aos-duration="2300"
+                data-aos-anchor-placement="top-bottom"
+              >
+                <Suspense fallback={<p>Loading.....</p>} >
+                  <Button
+                    text="Comece agora"
+                    width="14rem"
+                  />
+                </Suspense>
               </S.AnnouncementButtonBox>
             </aside>
-            <S.MainFigure>
+            <S.MainFigure
+              data-aos="fade-left"
+              data-aos-duration="2500"
+            >
               <img src={home.orchestra.url} alt="Orquestra" />
             </S.MainFigure>
           </S.MainAnnouncement>
-          <S.CardsBox>
-            <S.Cards>
-              {home.cards.map((item, index) => (
-                <S.Card key={index} className="reveal">
-                  <S.CardHeader>
-                    <img
-                      src={item.instrument.url}
-                      alt={item.name}
-                      draggable="false"
-                      loading="lazy"
-                    />
-                  </S.CardHeader>
-                  <S.CardBody>
-                    <h3>{item.name}</h3>
-                    <p>{item.description}</p>
-                  </S.CardBody>
-                  <S.CardFooter>
-                    <img
-                      src={item.arrow.url}
-                      alt="Arrow for right"
-                      draggable="false"
-                      loading="lazy"
-                      onMouseEnter={handleIncrease}
-                      onMouseLeave={handleDecrease}
-                    />
-                  </S.CardFooter>
-                </S.Card>
-              ))}
-            </S.Cards>
-          </S.CardsBox>
+          <Suspense fallback={<p>Loading.....</p>} >
+            <Cards />
+          </Suspense>
           <S.CursersBox>
             <S.CursersAnouncement>
-              <h2 className="reveal">E <span>vários</span> outros!</h2>
-              <Button
-                text="Conhecer cursos"
-                width="14rem"
-                className="reveal"
-                onMouseEnter={handleIncrease}
-                onMouseLeave={handleDecrease}
-              />
+              <h2
+                data-aos="fade-up"
+                data-aos-duration="2000"
+              >E <span>vários</span> outros!</h2>
+              <Suspense fallback={<p>Loading.....</p>} >
+                <Button
+                  data-aos="fade-up"
+                  data-aos-duration="2000"
+                  data-aos-anchor-placement="top-bottom"
+                  text="Conhecer cursos"
+                  width="14rem"
+                />
+              </Suspense>
             </S.CursersAnouncement>
           </S.CursersBox>
         </S.MainContainer>
       </S.Main>
       <S.Footer>
         <S.FooterContainer>
-          <S.FooterAbout className="reveal-left">
+          <S.FooterAbout>
             <S.FooterAboutLogo
               onClick={toTop}
-              onMouseEnter={handleIncrease}
-              onMouseLeave={handleDecrease}>
+              data-aos="fade-right"
+              data-aos-duration="2000"
+            >
               <h2>{home.logo}</h2>
               <p>{home.typeOfSchool}</p>
             </S.FooterAboutLogo>
-            <S.FooterAboutDescription>
+            <S.FooterAboutDescription
+              data-aos="fade-right"
+              data-aos-duration="2100"
+              data-aos-anchor-placement="top-bottom"
+            >
               <p>{home.description}</p>
             </S.FooterAboutDescription>
           </S.FooterAbout>
           <S.FooterNavigation>
-            <S.FooterNavigationList className="reveal-left">
-              <ul>
+            <S.FooterNavigationList>
+              <ul
+                data-aos="fade-right"
+                data-aos-duration="2200"
+              >
                 {home.navigations.map((item, index) => (
                   <li
                     key={index}
                     title={item.name}
-                    onMouseEnter={handleIncrease}
-                    onMouseLeave={handleDecrease}
                   >
                     {item.name}
                   </li>
@@ -217,16 +206,19 @@ export default function App() {
               </ul>
             </S.FooterNavigationList>
           </S.FooterNavigation>
-          <S.FooterContact className="reveal-right">
+          <S.FooterContact
+            data-aos="fade-left"
+            data-aos-duration="2300"
+          >
             <label htmlFor="email">Receba materiais gratuitos no seu email</label>
             <S.FooterContactForm>
               <input type="email" id="email" />
-              <Button
-                text="Quero receber"
-                width="14rem"
-                onMouseEnter={handleIncrease}
-                onMouseLeave={handleDecrease}
-              />
+              <Suspense fallback={<p>Loading.....</p>} >
+                <Button
+                  text="Quero receber"
+                  width="14rem"
+                />
+              </Suspense>
             </S.FooterContactForm>
           </S.FooterContact>
         </S.FooterContainer>

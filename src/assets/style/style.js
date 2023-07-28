@@ -1,28 +1,4 @@
-import styled, { keyframes } from "styled-components";
-
-export const SlideAnimationLeft = keyframes`
-    0% {
-        transform: translateX(-4rem);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-`;
-
-export const SlideAnimationRight = keyframes`
-    0% {
-        transform: translateX(4rem);
-        opacity: 0;
-    }
-
-    100% {
-        transform: translateX(0%);
-        opacity: 1;
-    }
-`;
+import styled from "styled-components";
 
 export const Header = styled.header`
     width: 100%;
@@ -30,7 +6,7 @@ export const Header = styled.header`
     display: grid;
     place-items: center;
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 950px) {
         height: 35vh;
     }
 `;
@@ -52,11 +28,11 @@ export const HeaderContainer = styled.section`
     transition: all 300ms ease-in-out;
     z-index: 1;
 
-    @media only screen and (width <= 1024px) {
+    @media only screen and (width <= 1100) {
         padding: 0 3rem;
     }
 
-    @media only screen and (width <= 800px) {
+    @media only screen and (width <= 950px) {
         padding: 2rem 0 2rem 0;
         flex-direction: column;
     }
@@ -72,20 +48,22 @@ export const Logo = styled.div`
     user-select: none;
     text-transform: uppercase;
     padding-left: 1rem;
-    animation: ${SlideAnimationLeft} 2s ease-in-out;
     
     h1 {
         font: 900 3em 'Roboto', sans-serif;
+        cursor: pointer;
     }
     
     p {
         font: 900 1.45em 'Roboto', sans-serif;
+        cursor: pointer;
     }
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 950px) {
         width: 100%;
         justify-content: center;
         align-items: center;
+        padding: 0;
     }
 `;
 
@@ -93,11 +71,11 @@ export const NavigationBox = styled.div`
     width: 40%;
     height: 100%;
 
-    @media only screen and (width <= 1024px) {
+    @media only screen and (width <= 1100) {
         width: 50%;
     }
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 950px) {
         width: 100%;
     }
 `;
@@ -110,7 +88,6 @@ export const Navigation = styled.nav`
     align-items: center;
     list-style: none;
     padding-left: 3rem;
-    animation: ${SlideAnimationRight} 2s ease-in-out;
 
     ul {
         width: 100%;
@@ -121,8 +98,9 @@ export const Navigation = styled.nav`
         flex-wrap: wrap;
         list-style: none;
         font: 500 1.25em 'Roboto', sans-serif;
-        li {
 
+        li {
+            cursor: pointer;
             position: relative;
 
             &::after {
@@ -147,19 +125,19 @@ export const Navigation = styled.nav`
         }
     }
 
-    @media only screen and (width <= 1024px) {
+    @media only screen and (width <= 1100) {
         padding-left: 0;
+
         ul {
             justify-content: space-evenly;
             font-size: 1em;
-            padding-left: 0;
         }
     }
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 950px) {
         ul {
             padding: 1rem 0;
-            width: 55%;
+            width: 40%;
             justify-content: center;
             gap: 1.5rem;
             font-size: 1.25em;
@@ -173,16 +151,15 @@ export const HeaderButtonBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: ${SlideAnimationRight} 2s ease-in-out;
 
-    @media only screen and (width <= 1024px) {
+    @media only screen and (width <= 1100) {
         button {
             height: 2.5rem;
             font-size: 1em;
         }
     }
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 950px) {
         width: 100%;
     }
 `;
@@ -217,7 +194,6 @@ export const TitleBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: ${SlideAnimationLeft} 2s ease-in-out;
 
     h2 {
         width: 80%;
@@ -241,6 +217,13 @@ export const TitleBox = styled.div`
             }
         }
     }
+
+    @media only screen and (width <= 1100px) {
+        h2 {
+            font-size: 3em;
+            width: 85%;
+        }
+    }
 `;
 
 export const Description = styled.div`
@@ -249,12 +232,21 @@ export const Description = styled.div`
     justify-content: center;
     align-items: center;
     padding-left: 2rem;
-    animation: ${SlideAnimationLeft} 2.2s ease-in-out;
 
     p {
         width: 80%;
         height: 100%;
         font: 500 1.5em 'Roboto', sans-serif;
+    }
+
+    @media only screen and (width <= 1100px) {
+        width: 80%;
+        padding-left: 1rem;
+
+        p {
+            width: 85%;
+            font-size: 1.25em;
+        }
     }
 `;
 
@@ -265,7 +257,6 @@ export const AnnouncementButtonBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    animation: ${SlideAnimationLeft} 2.5s ease-in-out;
 
     button {
         position: relative;
@@ -280,6 +271,10 @@ export const AnnouncementButtonBox = styled.div`
         height: 9rem;
         width: 9rem;
     }
+
+    @media only screen and (width <= 1100px) {
+        width: 60%;
+    }
 `;
 
 export const MainFigure = styled.figure`
@@ -290,7 +285,6 @@ export const MainFigure = styled.figure`
     align-items: center;
     padding-bottom: 8rem;
     user-select: none;
-    animation: ${SlideAnimationRight} 2s ease-in-out;
 
     img {
         width: 130%;
@@ -298,102 +292,17 @@ export const MainFigure = styled.figure`
     }
 `;
 
-export const CardsBox = styled.div`
+export const CursersBox = styled.div`
     width: 100%;
     height: 50vh;
     display: flex;
     justify-content: center;
-    margin-top: -7rem;
-`;
-
-export const Cards = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
     align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 1rem;
 
-    article:nth-child(odd) {
-        background-color: #ED4D1B;
-        
-        &:hover {
-            margin-top: 2rem;
-        }
+    @media only screen and (width <= 1304px) {
+        height: 70vh;
+        align-items: center;
     }
-    
-    article:nth-child(even) {
-        background-color: #FF9A3C;
-        margin-top: 2rem;
-
-        &:hover {
-            margin: 0;
-        }
-    }
-`;
-
-export const Card = styled.article`
-    width: 19rem;
-    height: 22rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 2rem 1rem 0 2rem;
-    border: 0.125rem solid #000;
-    box-shadow: 0.25rem 0.25rem 0 0 #000;
-    transition: all 1s ease-in-out;
-`;
-
-export const CardHeader = styled.div`
-    width: 100%;
-    height: 30%;
-
-    img {
-        width: 3rem;
-        height: 3rem;
-    }
-`;
-
-export const CardBody = styled.div`
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 1rem;
-
-    h3 {
-        font: 900 1.5em 'Roboto', sans-serif;
-    }
-
-    p {
-        font: 500 1em 'Roboto', sans-serif;
-    }
-`;
-
-export const CardFooter = styled.div`
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    img {
-        width: 4rem;
-        height: 4rem;
-        object-fit: contain;
-    }
-`;
-
-export const CursersBox = styled.div`
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 `;
 
 export const CursersAnouncement = styled.div`
@@ -412,10 +321,6 @@ export const CursersAnouncement = styled.div`
         span {
             color: #ED4D1B;
         }
-    }
-    
-    button {
-        transition: all 1s ease-in-out;
     }
 `;
 
@@ -457,10 +362,12 @@ export const FooterAboutLogo = styled.div`
     
     h2 {
         font: 900 2.5em 'Roboto', sans-serif;
+        cursor: pointer;
     }
     
     p {
         font: 900 1.2em 'Roboto', sans-serif;
+        cursor: pointer;
     }
 `;
 
@@ -500,7 +407,7 @@ export const FooterNavigationList = styled.div`
 
         li {
             font: 500 1.25em 'Roboto', sans-serif;
-
+            cursor: pointer;
             position: relative;
 
             &::after {

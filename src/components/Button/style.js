@@ -10,6 +10,7 @@ export const Button = styled.button`
     color: #000;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 
     &:hover {
         box-shadow: 0.8125rem 0.875rem 0 -0.6875rem #1E1E1E;
