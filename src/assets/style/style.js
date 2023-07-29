@@ -64,6 +64,14 @@ export const Logo = styled.div`
         justify-content: center;
         align-items: center;
         padding: 0;
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.25em;
+        }
     }
 `;
 
@@ -125,7 +133,7 @@ export const Navigation = styled.nav`
         }
     }
 
-    @media only screen and (width <= 1100) {
+    @media only screen and (width <= 1100px) {
         padding-left: 0;
 
         ul {
@@ -137,7 +145,7 @@ export const Navigation = styled.nav`
     @media only screen and (width <= 950px) {
         ul {
             padding: 1rem 0;
-            width: 40%;
+            width: 50%;
             justify-content: center;
             gap: 1.5rem;
             font-size: 1.25em;
@@ -329,6 +337,10 @@ export const Footer = styled.footer`
     height: 50vh;
     display: grid;
     place-items: center;
+
+    @media only screen and (width <= 1024px) {
+        height: 90vh;
+    }
 `;
 
 export const FooterContainer = styled.section`
@@ -338,6 +350,11 @@ export const FooterContainer = styled.section`
     border: 0.0625rem solid #000;
     border-top: none;
     padding: 2rem 5rem;
+
+    @media only screen and (width <= 1024px) {
+        flex-direction: column;
+        padding: 0 1rem 1rem 2rem;
+    }
 `;
 
 export const FooterAbout = styled.div`
@@ -348,6 +365,10 @@ export const FooterAbout = styled.div`
     align-items: flex-start;
     flex-direction: column;
     transition: all 1s ease-in-out;
+
+    @media only screen and (width <= 1024px) {
+        width: 100%;
+    }
 `;
 
 export const FooterAboutLogo = styled.div`
@@ -369,6 +390,10 @@ export const FooterAboutLogo = styled.div`
         font: 900 1.2em 'Roboto', sans-serif;
         cursor: pointer;
     }
+
+    @media only screen and (width <= 1024px) {
+        height: 100%;
+    }
 `;
 
 export const FooterAboutDescription = styled.div`
@@ -378,6 +403,10 @@ export const FooterAboutDescription = styled.div`
     p {
         font: 500 1.25em 'Roboto', sans-serif;
     }
+
+    @media only screen and (width <= 1024px) {
+        width: 100%;
+    }
 `;
 
 export const FooterNavigation = styled.div`
@@ -386,6 +415,10 @@ export const FooterNavigation = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media only screen and (width <= 1024px) {
+        width: 100%;
+    }
 `;
 
 export const FooterNavigationList = styled.div`
@@ -431,6 +464,15 @@ export const FooterNavigationList = styled.div`
             }
         }
     }
+
+    @media only screen and (width <= 1024px) {
+        padding: 2rem 0;
+
+        ul {
+            justify-content: flex-start;
+            gap: 2rem;
+        }
+    }
 `;
 
 export const FooterContact = styled.div`
@@ -444,6 +486,10 @@ export const FooterContact = styled.div`
 
     label {
         font: 500 1.5em 'Roboto', sans-serif;
+    }
+
+    @media only screen and (width <= 1024px) {
+        width: 100%;
     }
 `;
 
@@ -465,5 +511,9 @@ export const FooterContactForm = styled.form`
         padding: 0 1rem;
         font: 500 1.25em 'Roboto', sans-serif;
         outline: none;
+    }
+
+    @media only screen and (width <= 1024px) {
+        height: 100%;
     }
 `;
