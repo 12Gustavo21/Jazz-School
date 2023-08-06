@@ -1,4 +1,18 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const translateX = keyframes`
+    0% {
+        transform: translateX(.5rem);
+    }
+
+    50% {
+        transform: translateX(-.5rem);
+    }
+
+    100% {
+        transform: translateX(.5rem);
+    }
+`;
 
 export const CardsBox = styled.div`
     width: 100%;
@@ -25,19 +39,11 @@ export const Cards = styled.div`
 
     article:nth-child(odd) {
         background-color: #ED4D1B;
-
-        &:hover {
-            margin-top: 2rem;
-        }
     }
     
     article:nth-child(even) {
         background-color: #FF9A3C;
         margin-top: 2rem;
-
-        &:hover {
-            margin-top: 0;
-        }
     }
 `;
 
@@ -52,6 +58,10 @@ export const Card = styled.article`
     border: 0.125rem solid #000;
     box-shadow: 0.25rem 0.25rem 0 0 #000;
     transition: all 1s ease-in-out !important;
+
+    &:hover {
+        box-shadow: 0 0 0 0 #000;
+    }
 `;
 
 export const CardHeader = styled.div`
@@ -94,5 +104,9 @@ export const CardFooter = styled.div`
         height: 4rem;
         object-fit: contain;
         cursor: pointer;
+
+        &:hover {
+            animation: ${translateX} 1s ease-in-out infinite;
+        }
     }
 `;

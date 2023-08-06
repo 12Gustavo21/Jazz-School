@@ -115,7 +115,7 @@ export default function App() {
           hiddenMenu={scroll === 'down'}
         >
           <S.MainAnnouncement>
-            <aside>
+            <S.MainAside>
               <S.TitleBox
                 data-aos="fade-right"
                 data-aos-duration="2100"
@@ -140,7 +140,7 @@ export default function App() {
                   />
                 </Suspense>
               </S.AnnouncementButtonBox>
-            </aside>
+            </S.MainAside>
             <S.MainFigure
               data-aos="fade-left"
               data-aos-duration="2500"

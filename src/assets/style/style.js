@@ -5,10 +5,6 @@ export const Header = styled.header`
     height: 20vh;
     display: grid;
     place-items: center;
-
-    @media only screen and (width <= 950px) {
-        height: 35vh;
-    }
 `;
 
 export const HeaderContainer = styled.section`
@@ -27,15 +23,6 @@ export const HeaderContainer = styled.section`
     transform: ${props => props.hiddenMenu ? 'translateY(-100%)' : 'translateY(0)'};
     transition: all 300ms ease-in-out;
     z-index: 1;
-
-    @media only screen and (width <= 1100) {
-        padding: 0 3rem;
-    }
-
-    @media only screen and (width <= 950px) {
-        padding: 2rem 0 2rem 0;
-        flex-direction: column;
-    }
 `;
 
 export const Logo = styled.div`
@@ -58,34 +45,11 @@ export const Logo = styled.div`
         font: 900 1.45em 'Roboto', sans-serif;
         cursor: pointer;
     }
-
-    @media only screen and (width <= 950px) {
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-
-        h1 {
-            font-size: 2.5em;
-        }
-
-        p {
-            font-size: 1.25em;
-        }
-    }
 `;
 
 export const NavigationBox = styled.div`
     width: 40%;
     height: 100%;
-
-    @media only screen and (width <= 1100) {
-        width: 50%;
-    }
-
-    @media only screen and (width <= 950px) {
-        width: 100%;
-    }
 `;
 
 export const Navigation = styled.nav`
@@ -132,25 +96,6 @@ export const Navigation = styled.nav`
             }
         }
     }
-
-    @media only screen and (width <= 1100px) {
-        padding-left: 0;
-
-        ul {
-            justify-content: space-evenly;
-            font-size: 1em;
-        }
-    }
-
-    @media only screen and (width <= 950px) {
-        ul {
-            padding: 1rem 0;
-            width: 50%;
-            justify-content: center;
-            gap: 1.5rem;
-            font-size: 1.25em;
-        }
-    }
 `;
 
 export const HeaderButtonBox = styled.div`
@@ -159,17 +104,6 @@ export const HeaderButtonBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    @media only screen and (width <= 1100) {
-        button {
-            height: 2.5rem;
-            font-size: 1em;
-        }
-    }
-
-    @media only screen and (width <= 950px) {
-        width: 100%;
-    }
 `;
 
 export const Main = styled.main`
@@ -194,17 +128,31 @@ export const MainAnnouncement = styled.div`
     display: flex;
     padding: 3rem 0 10rem;
     border-bottom: 0.0625rem solid #000;
+
+    @media only screen and (width <= 768px) {
+        flex-direction: column-reverse;
+    }
+`;
+
+export const MainAside = styled.aside`
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
 `;
 
 export const TitleBox = styled.div`
     width: 100%;
-    height: 40%;
+    height: 35%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-left: 3rem;
 
     h2 {
-        width: 80%;
         display: flex;
         justify-content: center;
         align-items: flex-start;
@@ -225,36 +173,17 @@ export const TitleBox = styled.div`
             }
         }
     }
-
-    @media only screen and (width <= 1100px) {
-        h2 {
-            font-size: 3em;
-            width: 85%;
-        }
-    }
 `;
 
 export const Description = styled.div`
-    width: 70%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 2rem;
+    padding-left: 3rem;
 
     p {
-        width: 80%;
-        height: 100%;
         font: 500 1.5em 'Roboto', sans-serif;
-    }
-
-    @media only screen and (width <= 1100px) {
-        width: 80%;
-        padding-left: 1rem;
-
-        p {
-            width: 85%;
-            font-size: 1.25em;
-        }
     }
 `;
 
@@ -263,8 +192,9 @@ export const AnnouncementButtonBox = styled.div`
     height: 30%;
     padding-top: 1rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
+    padding-left: 3rem;
 
     button {
         position: relative;
@@ -278,10 +208,6 @@ export const AnnouncementButtonBox = styled.div`
         left: 8rem;
         height: 9rem;
         width: 9rem;
-    }
-
-    @media only screen and (width <= 1100px) {
-        width: 60%;
     }
 `;
 
@@ -298,6 +224,15 @@ export const MainFigure = styled.figure`
         width: 130%;
         height: 110%;
     }
+
+    @media only screen and (width <= 768px) {
+        padding-bottom: 1rem;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
 `;
 
 export const CursersBox = styled.div`
@@ -306,11 +241,6 @@ export const CursersBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
-    @media only screen and (width <= 1304px) {
-        height: 70vh;
-        align-items: center;
-    }
 `;
 
 export const CursersAnouncement = styled.div`
@@ -337,10 +267,6 @@ export const Footer = styled.footer`
     height: 50vh;
     display: grid;
     place-items: center;
-
-    @media only screen and (width <= 1024px) {
-        height: 90vh;
-    }
 `;
 
 export const FooterContainer = styled.section`
@@ -350,11 +276,6 @@ export const FooterContainer = styled.section`
     border: 0.0625rem solid #000;
     border-top: none;
     padding: 2rem 5rem;
-
-    @media only screen and (width <= 1024px) {
-        flex-direction: column;
-        padding: 0 1rem 1rem 2rem;
-    }
 `;
 
 export const FooterAbout = styled.div`
@@ -365,10 +286,6 @@ export const FooterAbout = styled.div`
     align-items: flex-start;
     flex-direction: column;
     transition: all 1s ease-in-out;
-
-    @media only screen and (width <= 1024px) {
-        width: 100%;
-    }
 `;
 
 export const FooterAboutLogo = styled.div`
@@ -390,10 +307,6 @@ export const FooterAboutLogo = styled.div`
         font: 900 1.2em 'Roboto', sans-serif;
         cursor: pointer;
     }
-
-    @media only screen and (width <= 1024px) {
-        height: 100%;
-    }
 `;
 
 export const FooterAboutDescription = styled.div`
@@ -403,10 +316,6 @@ export const FooterAboutDescription = styled.div`
     p {
         font: 500 1.25em 'Roboto', sans-serif;
     }
-
-    @media only screen and (width <= 1024px) {
-        width: 100%;
-    }
 `;
 
 export const FooterNavigation = styled.div`
@@ -415,10 +324,6 @@ export const FooterNavigation = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-
-    @media only screen and (width <= 1024px) {
-        width: 100%;
-    }
 `;
 
 export const FooterNavigationList = styled.div`
@@ -464,15 +369,6 @@ export const FooterNavigationList = styled.div`
             }
         }
     }
-
-    @media only screen and (width <= 1024px) {
-        padding: 2rem 0;
-
-        ul {
-            justify-content: flex-start;
-            gap: 2rem;
-        }
-    }
 `;
 
 export const FooterContact = styled.div`
@@ -486,10 +382,6 @@ export const FooterContact = styled.div`
 
     label {
         font: 500 1.5em 'Roboto', sans-serif;
-    }
-
-    @media only screen and (width <= 1024px) {
-        width: 100%;
     }
 `;
 
@@ -511,9 +403,5 @@ export const FooterContactForm = styled.form`
         padding: 0 1rem;
         font: 500 1.25em 'Roboto', sans-serif;
         outline: none;
-    }
-
-    @media only screen and (width <= 1024px) {
-        height: 100%;
     }
 `;
