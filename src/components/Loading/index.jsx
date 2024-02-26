@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Assets
-import Piano from '../../assets/video/piano.mp4';
+import Piano from '../../assets/gifs/piano.gif';
 
 //Styles
 import { styled } from 'styled-components';
@@ -77,7 +77,7 @@ export default function index() {
                 <section>
                     <p>Carregando...</p>
                     <div>
-                        <video src={Piano} autoPlay loop muted></video>
+                        <img src={Piano} alt="Piano" />
                     </div>
                 </section>
             </Main>
