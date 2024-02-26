@@ -1,10 +1,10 @@
 # Jazz Scholl
 
-> Status : Unfinished project 🕰️ / Open PR
+> Status : Finished project ✅ / Open PR
 
 ## OneBitCode challenge
 
-<img width ='800px' src ='./src/assets/gifs/Recording.gif' />
+<img width ='800px' src ='src/assets/img/home-print.png' />
 
 _Technologies_
 
