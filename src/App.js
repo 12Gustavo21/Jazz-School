@@ -1,24 +1,25 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from "react";
 
 //Styles
-import { GlobalStyle } from './assets/global/style';
-import * as S from './assets/style/style';
+import { GlobalStyle } from "./assets/global/style";
+import * as S from "./assets/style/style";
 
 //AOS
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 //Apollo
-import { useQuery } from '@apollo/client';
+import { useQuery } from "@apollo/client";
 
 //Query
-import GET_HOME_DATA from './assets/query/index';
+import GET_HOME_DATA from "./assets/query/index";
 
 //Components
-const Button = lazy(() => import('./components/Button'));
-const Loading = lazy(() => import('./components/Loading'));
-const Error = lazy(() => import('./components/Error'));
-const Cards = lazy(() => import('./components/Cards'));
+import Loader from "./components/Loader";
+const Button = lazy(() => import("./components/Button"));
+const Loading = lazy(() => import("./components/Loading"));
+const Error = lazy(() => import("./components/Error"));
+const Cards = lazy(() => import("./components/Cards"));
 
 export default function App() {
   const [scroll, setScroll] = useState(false);
@@ -31,9 +32,9 @@ export default function App() {
 
     if (currentPosition > 0) {
       if (scrollPosition > currentPosition) {
-        setScroll('up');
+        setScroll("up");
       } else {
-        setScroll('down');
+        setScroll("down");
       }
     } else {
       setScroll(false);
@@ -42,15 +43,15 @@ export default function App() {
 
   useEffect(() => {
     AOS.init({});
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   });
 
   const { loading, error, data } = useQuery(GET_HOME_DATA, {
-    fetchPolicy: 'cache-first',
+    fetchPolicy: "cache-first",
   });
 
   if (loading) return <Loading />;
@@ -61,7 +62,7 @@ export default function App() {
   const { home } = data;
 
   function toTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   return (
@@ -69,8 +70,9 @@ export default function App() {
       <GlobalStyle />
       <S.Header>
         <S.HeaderContainer
-          showMenu={scroll === 'up'}
-          hiddenMenu={scroll === 'down'}>
+          showMenu={scroll === "up"}
+          hiddenMenu={scroll === "down"}
+        >
           <S.Logo
             onClick={toTop}
             data-aos="fade-right"
@@ -81,51 +83,37 @@ export default function App() {
           </S.Logo>
           <S.NavigationBox>
             <S.Navigation>
-              <ul
-                data-aos="fade-left"
-                data-aos-duration="2000"
-              >
+              <ul data-aos="fade-left" data-aos-duration="2000">
                 {home.navigations.map((item, index) => (
-                  <li
-                    key={index}
-                    title={item.name}
-                  >
+                  <li key={index} title={item.name}>
                     {item.name}
                   </li>
                 ))}
               </ul>
             </S.Navigation>
           </S.NavigationBox>
-          <S.HeaderButtonBox
-            data-aos="fade-left"
-            data-aos-duration="2000"
-          >
-            <Suspense fallback={<p>Loading.....</p>} >
-              <Button
-                text="Se inscreva"
-                width="12rem"
-              />
+          <S.HeaderButtonBox data-aos="fade-left" data-aos-duration="2000">
+            <Suspense fallback={<Loader />}>
+              <Button text="Se inscreva" width="12.5rem" />
             </Suspense>
           </S.HeaderButtonBox>
         </S.HeaderContainer>
       </S.Header>
       <S.Main>
         <S.MainContainer
-          showMenu={scroll === 'up'}
-          hiddenMenu={scroll === 'down'}
+          showMenu={scroll === "up"}
+          hiddenMenu={scroll === "down"}
         >
           <S.MainAnnouncement>
             <S.MainAside>
-              <S.TitleBox
-                data-aos="fade-right"
-                data-aos-duration="2100"
-              >
-                <h2 dangerouslySetInnerHTML={{ __html: home.title.text.replace(/\\n/g, '') }}></h2>
+              <S.TitleBox data-aos="fade-right" data-aos-duration="2100">
+                <h2
+                  dangerouslySetInnerHTML={{
+                    __html: home.title.text.replace(/\\n/g, ""),
+                  }}
+                ></h2>
               </S.TitleBox>
-              <S.Description
-                data-aos="fade-right"
-                data-aos-duration="2200"
-              >
+              <S.Description data-aos="fade-right" data-aos-duration="2200">
                 <p>{home.description}</p>
               </S.Description>
               <S.AnnouncementButtonBox
@@ -133,37 +121,30 @@ export default function App() {
                 data-aos-duration="2300"
                 data-aos-anchor-placement="top-bottom"
               >
-                <Suspense fallback={<p>Loading.....</p>} >
-                  <Button
-                    text="Comece agora"
-                    width="14rem"
-                  />
+                <Suspense fallback={<Loader />}>
+                  <Button text="Comece agora" width="14.0625rem" />
                 </Suspense>
               </S.AnnouncementButtonBox>
             </S.MainAside>
-            <S.MainFigure
-              data-aos="fade-left"
-              data-aos-duration="2500"
-            >
+            <S.MainFigure data-aos="fade-left" data-aos-duration="2500">
               <img src={home.orchestra.url} alt="Orquestra" />
             </S.MainFigure>
           </S.MainAnnouncement>
-          <Suspense fallback={<p>Loading.....</p>} >
+          <Suspense fallback={<Loader />}>
             <Cards />
           </Suspense>
           <S.CursersBox>
             <S.CursersAnouncement>
-              <h2
-                data-aos="fade-up"
-                data-aos-duration="2000"
-              >E <span>vários</span> outros!</h2>
-              <Suspense fallback={<p>Loading.....</p>} >
+              <h2 data-aos="fade-up" data-aos-duration="2000">
+                E <span>vários</span> outros!
+              </h2>
+              <Suspense fallback={<Loader />}>
                 <Button
                   data-aos="fade-up"
                   data-aos-duration="2000"
                   data-aos-anchor-placement="top-bottom"
                   text="Conhecer cursos"
-                  width="14rem"
+                  width="14.0625rem"
                 />
               </Suspense>
             </S.CursersAnouncement>
@@ -191,15 +172,9 @@ export default function App() {
           </S.FooterAbout>
           <S.FooterNavigation>
             <S.FooterNavigationList>
-              <ul
-                data-aos="fade-right"
-                data-aos-duration="2200"
-              >
+              <ul data-aos="fade-right" data-aos-duration="2200">
                 {home.navigations.map((item, index) => (
-                  <li
-                    key={index}
-                    title={item.name}
-                  >
+                  <li key={index} title={item.name}>
                     {item.name}
                   </li>
                 ))}
@@ -209,15 +184,15 @@ export default function App() {
           <S.FooterContact
             data-aos="fade-left"
             data-aos-duration="2300"
+            data-aos-anchor-placement="top-bottom"
           >
-            <label htmlFor="email">Receba materiais gratuitos no seu email</label>
+            <label htmlFor="email">
+              Receba materiais gratuitos no seu email
+            </label>
             <S.FooterContactForm>
               <input type="email" id="email" />
-              <Suspense fallback={<p>Loading.....</p>} >
-                <Button
-                  text="Quero receber"
-                  width="14rem"
-                />
+              <Suspense fallback={<Loader />}>
+                <Button text="Quero receber" width="14.0625rem" />
               </Suspense>
             </S.FooterContactForm>
           </S.FooterContact>
