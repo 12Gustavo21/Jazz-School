@@ -14,8 +14,9 @@ export const GlobalStyle = createGlobalStyle`
 
     html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
     }
-
+    
     body {
         background: linear-gradient(90deg, #FFE7D1 0%, #FFF2E5 100%);
         overflow-x: hidden;

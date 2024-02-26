@@ -30,7 +30,7 @@ export default function App() {
 
     setScrollPosition(currentPosition);
 
-    if (currentPosition > 0) {
+    if (currentPosition > 50) {
       if (scrollPosition > currentPosition) {
         setScroll("up");
       } else {
@@ -106,7 +106,11 @@ export default function App() {
         >
           <S.MainAnnouncement>
             <S.MainAside>
-              <S.TitleBox data-aos="fade-right" data-aos-duration="2100">
+              <S.TitleBox
+                data-aos="fade-right"
+                data-aos-duration="2100"
+                data-aos-anchor-placement="top-bottom"
+              >
                 <h2
                   dangerouslySetInnerHTML={{
                     __html: home.title.text.replace(/\\n/g, ""),
